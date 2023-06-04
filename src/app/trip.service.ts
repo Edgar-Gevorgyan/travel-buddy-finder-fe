@@ -26,11 +26,16 @@ export class TripService {
         { location, startDate, durationInDays },
         { headers }
       )
-      .subscribe(() => this.router.navigate(['']));
+      .subscribe(() => this.router.navigate(['trips']));
   }
 
   getTrips(): Observable<Trip[]> {
     let headers = new HttpHeaders({ Authorization: this.userService.userID });
     return this.http.get<Trip[]>(this.tripsUrl, { headers });
+  }
+
+  getTrip(tripID: string): Observable<Trip> {
+    let headers = new HttpHeaders({ Authorization: this.userService.userID });
+    return this.http.get<Trip>(this.tripsUrl + '/' + tripID, { headers });
   }
 }

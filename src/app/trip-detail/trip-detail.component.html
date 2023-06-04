@@ -1,0 +1,16 @@
+<p>trip-detail works!</p>
+<div  *ngIf="trip !== null">
+    <h2>{{trip.location}}</h2>
+    <p>Departure: {{trip.startDate}}</p>
+    <p>Length of journey: {{trip.startDate}}</p>
+    <ul *ngFor="let weather of trip.weather">
+        <li>Date: {{weather.date}}</li>
+        <p>Average temperature: {{weather.avgtempC}}</p>
+        <hr>
+    </ul>
+    <p>Shared by: {{trip.sharedBy.username}}</p>
+    <p  *ngIf=" trip.interestedUsers.length > 0">Unterested users:</p>
+    <ul *ngFor="let interestedUser of trip.interestedUsers">
+        <li>{{interestedUser.username}}</li>
+    </ul>
+</div>

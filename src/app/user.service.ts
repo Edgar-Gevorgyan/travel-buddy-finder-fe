@@ -23,7 +23,7 @@ export class UserService {
       .post<User>(this.loginUrl, { username, password })
       .subscribe((response) => {
         this.userID = response.id;
-        this.router.navigate(['']);
+        this.router.navigate(['trips']);
       });
   }
 }
