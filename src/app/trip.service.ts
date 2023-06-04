@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { UserService } from './user.service';
 import { Trip } from './type';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -26,5 +27,10 @@ export class TripService {
         { headers }
       )
       .subscribe(() => this.router.navigate(['']));
+  }
+
+  getTrips(): Observable<Trip[]> {
+    let headers = new HttpHeaders({ Authorization: this.userService.userID });
+    return this.http.get<Trip[]>(this.tripsUrl, { headers });
   }
 }
