@@ -1,4 +1,3 @@
-<p>trip-detail works!</p>
 <div  *ngIf="trip !== null">
     <h2>{{trip.location}}</h2>
     <p>Departure: {{trip.startDate}}</p>
@@ -13,4 +12,5 @@
     <ul *ngFor="let interestedUser of trip.interestedUsers">
         <li>{{interestedUser.username}}</li>
     </ul>
+    <button *ngIf="!isAlreadyInterested()" (click)="markAsInterested()">Interested</button>
 </div>

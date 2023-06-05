@@ -11,6 +11,7 @@ export class UserService {
   private loginUrl = environment.baseURL + '/login';
 
   userID: string = '';
+  username: string = '';
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -22,6 +23,7 @@ export class UserService {
     this.http
       .post<User>(this.loginUrl, { username, password })
       .subscribe((response) => {
+        this.username = username;
         this.userID = response.id;
         this.router.navigate(['trips']);
       });

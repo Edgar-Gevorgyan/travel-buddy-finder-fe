@@ -38,4 +38,13 @@ export class TripService {
     let headers = new HttpHeaders({ Authorization: this.userService.userID });
     return this.http.get<Trip>(this.tripsUrl + '/' + tripID, { headers });
   }
+
+  markTripAsInteresting(tripID: string): Observable<Trip> {
+    let headers = new HttpHeaders({ Authorization: this.userService.userID });
+    return this.http.post<Trip>(
+      this.tripsUrl + '/' + tripID + '/interestedUsers',
+      {},
+      { headers }
+    );
+  }
 }
