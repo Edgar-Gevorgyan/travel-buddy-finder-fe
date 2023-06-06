@@ -9,9 +9,10 @@ import { TripsComponent } from './trips/trips.component';
 import { AuthGuardService } from './auth-guard.service';
 import { AddTripComponent } from './add-trip/add-trip.component';
 import { TripDetailComponent } from './trip-detail/trip-detail.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
-  declarations: [AppComponent, AuthComponent, TripsComponent, AddTripComponent, TripDetailComponent],
+  declarations: [AppComponent, AuthComponent, TripsComponent, AddTripComponent, TripDetailComponent, RegisterComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [AuthGuardService],
   bootstrap: [AppComponent],

@@ -9,6 +9,7 @@ import { User } from './type';
 })
 export class UserService {
   private loginUrl = environment.baseURL + '/login';
+  private usersUrl = environment.baseURL + '/users';
 
   userID: string = '';
   username: string = '';
@@ -19,9 +20,19 @@ export class UserService {
     return this.userID !== null && this.userID.length > 1;
   }
 
-  login(username: string, password: string) {
+  login(username: string, password: string): void {
     this.http
       .post<User>(this.loginUrl, { username, password })
+      .subscribe((response) => {
+        this.username = username;
+        this.userID = response.id;
+        this.router.navigate(['trips']);
+      });
+  }
+
+  register(username: string, password: string): void {
+    this.http
+      .post<User>(this.usersUrl, { username, password, isAdmin: false })
       .subscribe((response) => {
         this.username = username;
         this.userID = response.id;

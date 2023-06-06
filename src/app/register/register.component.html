@@ -1,9 +1,7 @@
-<form (submit)="onSubmit(username.value, password.value); $event.preventDefault()">
+<form (submit)="onRegister(username.value, password.value); $event.preventDefault()">
     <label for="username">Username:</label>
     <input #username type="text" id="username" name="username"><br><br>
     <label for="password">Password:</label>
     <input #password type="password" id="password" name="password"><br><br>
-    <input type="submit" value="Login">
+    <input type="submit" value="Sign up">
 </form>
-<br>
-<a routerLink="/register">sign up</a>

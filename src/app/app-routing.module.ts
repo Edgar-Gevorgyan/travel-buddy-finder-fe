@@ -5,6 +5,7 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthGuardService } from './auth-guard.service';
 import { AddTripComponent } from './add-trip/add-trip.component';
 import { TripDetailComponent } from './trip-detail/trip-detail.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: 'trips', component: TripsComponent, canActivate: [AuthGuardService] },
@@ -19,6 +20,7 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
   },
   { path: 'login', component: AuthComponent },
+  { path: 'register', component: RegisterComponent },
   { path: '**', redirectTo: 'trips' },
 ];
 
