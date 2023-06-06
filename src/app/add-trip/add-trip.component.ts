@@ -11,7 +11,7 @@ export class AddTripComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit(location: string, startDate: string, durationInDays: string) {
+  onSubmit(location: string, startDate: string, durationInDays: string): void {
     this.tripService.addTrip(location, startDate, parseInt(durationInDays));
   }
 }
