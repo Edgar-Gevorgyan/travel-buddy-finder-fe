@@ -1,5 +1,12 @@
 <button (click)="goToCreateTrip()">New trip</button>
-<br>
+<br><br>
+<form (submit)="onSearch(available.checked, username.value); $event.preventDefault()">
+    <label for="available">Available:</label>
+    <input #available type="checkbox" id="available" name="available"><br><br>
+    <label for="username">Shared by:</label>
+    <input #username type="text" id="username" name="username"><br><br>
+    <input type="submit" value="Search">
+</form>
 <div *ngFor="let trip of trips">
     <h2>{{trip.location}}</h2>
     <p>Departure: {{trip.startDate}}</p>

@@ -22,4 +22,11 @@ export class TripsComponent implements OnInit {
   goToCreateTrip(): void {
     this.router.navigate(['/addTrip']);
   }
+
+  onSearch(available: boolean, username: string): void {
+    this.trips = [];
+    this.tripService.getTrips(available, username).subscribe((trips) => {
+      this.trips = trips;
+    });
+  }
 }

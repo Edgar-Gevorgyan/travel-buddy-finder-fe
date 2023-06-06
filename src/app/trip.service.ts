@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
@@ -29,9 +29,19 @@ export class TripService {
       .subscribe(() => this.router.navigate(['trips']));
   }
 
-  getTrips(): Observable<Trip[]> {
+  getTrips(
+    available: boolean | null = null,
+    username: string = ''
+  ): Observable<Trip[]> {
     let headers = new HttpHeaders({ Authorization: this.userService.userID });
-    return this.http.get<Trip[]>(this.tripsUrl, { headers });
+    let params = new HttpParams();
+    if (available !== null) {
+      params = params.append('available', available);
+    }
+    if (username.length > 0) {
+      params = params.append('username', username);
+    }
+    return this.http.get<Trip[]>(this.tripsUrl, { headers, params });
   }
 
   getTrip(tripID: string): Observable<Trip> {
